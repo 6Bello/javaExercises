@@ -62,12 +62,12 @@ public class Esame {
 		nomeCorso = newNomeCorso;
 		crediti = newCrediti;
 		voto = newVoto;	
-		if(voto==30) lode = newLode;
+		if(voto==18) lode = newLode;
 		else lode = false;
 	}
 	
 	void verificaLode() {
-		if(voto==30) {
+		if(voto==18) {
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("metti V se hai ricevuto la lode");
 			if(scanner.next().charAt(0) == 'V') {

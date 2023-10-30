@@ -4,13 +4,14 @@ public class Libretto {
 	Persona studente1 = new Persona("Rossi", "Mario", "1990/12/2", "Via del corso", "Roma");
 	Esame[] esami = new Esame[20];
 	float mediaPonderata = 0;
+	int indice = 0;
 	
 	public int setEsame(int indiceEsame, String newDataEsame, int newCodiceCorso, String newNomeCorso, int newCrediti) {
 		if (indiceEsame >= 20) {
 			return 0;
 		} else {
 			esami[indiceEsame] = new Esame(newDataEsame, newCodiceCorso, newNomeCorso, newCrediti);
-			setMediaPonderataConUltimoIndice(indiceEsame);
+			indice ++;
 			return 1;
 		}
 	}
@@ -20,7 +21,7 @@ public class Libretto {
 			return 0;
 		} else {
 			esami[indiceEsame] = new Esame(newDataEsame, newCodiceCorso, newNomeCorso, newCrediti, newVoto);
-			setMediaPonderataConUltimoIndice(indiceEsame);
+			indice ++;
 			return 1;
 		}
 	}
@@ -30,27 +31,13 @@ public class Libretto {
 			return 0;
 		} else {
 			esami[indiceEsame] = new Esame(newDataEsame, newCodiceCorso, newNomeCorso, newCrediti, newVoto, newLode);
-			setMediaPonderataConUltimoIndice(indiceEsame);
+			indice ++;
 			return 1;
 		}
 	}
 	
 	private void setMediaPonderata() {
 		int totaleCrediti = 0;
-		int votiPerCrediti = 0;
-		for(int i=0; i<20; i++) {
-			if(esami[i]!=null) {
-				if(esami[i].getTipo()=='V') {
-					totaleCrediti+=esami[i].getCrediti();
-					votiPerCrediti+=(esami[i].getVoto() * esami[i].getCrediti());
-				}
-			}
-		}
-		mediaPonderata = votiPerCrediti / totaleCrediti;
-	}
-	
-	private void setMediaPonderataConUltimoIndice(int indice) {
-		int totaleCrediti = 1;
 		int votiPerCrediti = 0;
 		for(int i=0; i<indice; i++) {
 			if(esami[i]!=null) {
@@ -67,7 +54,7 @@ public class Libretto {
 		System.out.println("----------------------------------------------------------------------");
 		System.out.println("Nome Corso | Codice Corso | Data Esame | Tipo | Crediti | Voto | Lode");
 		System.out.println("----------------------------------------------------------------------");
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < indice; i++) {
 			// Formatta ogni attributo con larghezza specifica
 			String nomeCorsoFormatted = String.format("%-10s", esami[i].getNomeCorso());
 			String codiceCorsoFormatted = String.format("%-12s", esami[i].getCodiceCorso());
@@ -84,6 +71,7 @@ public class Libretto {
 			System.out.println(stringaEsame);
 			System.out.println("----------------------------------------------------------------------");
 		}
+		setMediaPonderata();
 		System.out.println("media ponderata degli esami con voto: " + mediaPonderata);
 	}
 }

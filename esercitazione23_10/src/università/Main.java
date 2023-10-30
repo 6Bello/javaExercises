@@ -10,11 +10,11 @@ public class Main {
 		Libretto libretto1 = new Libretto();
 		for(int i=0; i<25; i+=2) {
 			int codiceCorso = random.nextInt(9000) + 1000;
-			int creditiRandom = random.nextInt(11) + 1;
+			int creditiRandom = (random.nextInt(4)+1) * 3;
 			libretto1.setEsame(i, dataRandom(), codiceCorso, "corso " + i, creditiRandom);
 			codiceCorso = random.nextInt(9000) + 1000;
-			creditiRandom = random.nextInt(11) + 1;
-			int votoRandom = random.nextInt(30);
+			creditiRandom = (random.nextInt(4)+1) * 3;
+			int votoRandom = random.nextInt(18);
 			libretto1.setEsame(i+1, dataRandom(), codiceCorso, "corso " + (i+1), creditiRandom, votoRandom, false);
 		}
 		libretto1.printEsame();
