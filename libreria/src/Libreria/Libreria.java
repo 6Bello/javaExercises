@@ -1,8 +1,10 @@
 package Libreria;
 
+import java.util.ArrayList;
+
 public class Libreria {
     private int nScaffli=0;
-    private Scaffale Scaffali;
+    private ArrayList<Scaffale> Scaffali = new ArrayList<Scaffale>();
 
     public void spostaLibro(int idLibro, int newScaffale){
 
