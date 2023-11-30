@@ -28,5 +28,4 @@ public class Libro {
         this.editore = editore;
         this.larghezza_cm = larghezza_cm;
     }
-
 }
